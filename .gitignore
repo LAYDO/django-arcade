@@ -158,3 +158,25 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+
+# Node.js
+node_modules/
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+
+# Webpack
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+webpack-stats.json
+
+# Other
+dump.rdb

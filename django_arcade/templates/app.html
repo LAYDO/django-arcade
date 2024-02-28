@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}{% load render_bundle from webpack_loader %}
+{% render_bundle 'app' %}
+<html lang="en" class="theme-light">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+
+<head>
+    <title>Arcade</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    {% block page_head %}{% endblock %}
+</head>
+
+<body>
+    <div class="arcade-overlay" id="arcade_overlay">
+        <!-- Overlay content -->
+        <div class="arcade-overlay-content">
+            <a class="nav-link" id="menuNavTitle">Arcade</a>
+            {% if user.is_authenticated %}
+            <a class="nav-link" id="profile" href="#">Profile</a>
+            <a class="nav-link" id="logout" href="#">Logout</a>
+            {% else %}
+            <a class="nav-link" id="login" href="#">Login</a>
+            {% endif %}
+            <span class="nav-link" id="themeIcon">&#x263C</span>
+            {% block page_menu %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- Flexible Navigation Bar -->
+    <div class="arcade-mobile-nav" id="arcade_navbar">
+        <div class="arcade-nav-title" id="arcadeNavTitle">Arcade</div>
+        <div id="arcadeNavIcon">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
+    <div class="arcade-flex-home">
+        <div class="arcade-flex-home" id="arcade_home">
+            <div id="messageModal" class="modal">
+                <div id="modalContainer" class="modal-content">
+                    <div id="messageContent" class="alert"></div>
+                    <div class="close" id="message_close">OK</div>
+                </div>
+            </div>
+            {% block arcade_content_1 %}
+            {% endblock %}
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'dist/app.bundle.js' %}"></script>
+    {% block page_scripts %}{% endblock %}
+</body>
+
+</html>
